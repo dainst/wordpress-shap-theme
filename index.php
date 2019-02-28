@@ -16,7 +16,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<?php 
+		<?php
 			if ( have_posts() ) :
 
 				/* Start the Loop */
@@ -37,11 +37,11 @@ get_header(); ?>
 
 				get_template_part( 'template-parts/content', 'none' );
 
-			endif; 
+			endif;
 		?>
-		
+
 	</main><!-- #main -->
 </div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php // get_sidebar(); ?>
 <?php get_footer(); ?>
