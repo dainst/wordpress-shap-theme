@@ -1,81 +1,52 @@
 <?php
 /**
  * The header for our theme
+ *
  * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Simplelin
+ * @package WordPress
+ * @subpackage Twenty_Nineteen
+ * @since 1.0.0
  */
-
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js no-svg">
+?><!doctype html>
+<html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo ( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg/sfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>> 
-
+<body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'simplelin' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentynineteen' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+		<header id="masthead" class="<?php echo is_singular() && twentynineteen_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">
 
-		<div class="inside-header">
+			<div class="site-branding-container">
+				<?php get_template_part( 'template-parts/header/site', 'branding' ); ?>
+			</div><!-- .layout-wrap -->
 
-			<div class="container">
-
-				<div class="site-branding">
-
-					<?php if ( has_custom_logo() ) : ?>
-						<div class="site-logo">
-							<?php the_custom_logo(); ?>
-						</div><!-- .site-logo -->
-					<?php endif; ?>
-
-					<div class="title-area">
-						<?php
-							if ( is_front_page() && is_home() ) : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-							<?php else : ?>
-								<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<?php endif;
-
-						$description = get_bloginfo( 'description', 'display' );
-						if ( $description || is_customize_preview() ) : ?>
-							<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-						<?php endif; ?>
-					</div><!-- .title-area -->
-
-				</div><!-- .site-branding -->
-
-				<?php dynamic_sidebar( 'sidebar-header' ); ?>
-			</div><!-- .container -->
-
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-
-				<div class="container">
-
-				<?php if ( has_nav_menu( 'primary') ) { ?>
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'simplelin' ); ?></button>
+			<?php if ( is_singular() && twentynineteen_can_show_post_thumbnail() ) : ?>
+				<div class="site-featured-image">
 					<?php
-						wp_nav_menu( array(
-							'theme_location' => 'primary',
-							'menu_id'        => 'primary-menu',
-						) );
-				} else {} ?>
+						twentynineteen_post_thumbnail();
+						the_post();
+						$discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentynineteen_get_discussion_data() : null;
 
-			</nav><!-- #site-navigation -->
+						$classes = 'entry-header';
+					if ( ! empty( $discussion ) && absint( $discussion->responses ) > 0 ) {
+						$classes = 'entry-header has-discussion';
+					}
+					?>
+					<div class="<?php echo $classes; ?>">
+						<?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
+					</div><!-- .entry-header -->
+					<?php rewind_posts(); ?>
+				</div>
+			<?php endif; ?>
+		</header><!-- #masthead -->
 
-			</div>
-
-		</div><!-- .inside-header -->
-
-	</header><!-- #masthead -->
-			
-	<div id="content" class="site-content container clearfix">
+	<div id="content" class="site-content">
