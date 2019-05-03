@@ -267,183 +267,30 @@ function twentynineteen_editor_customizer_styles() {
 }
 add_action( 'enqueue_block_editor_assets', 'twentynineteen_editor_customizer_styles' );
 
-/**
- * Display custom color CSS in customizer and on frontend.
- */
-function twentynineteen_colors_css_wrap() {
 
-	// Only include custom colors in customizer or frontend.
-	if ( ( ! is_customize_preview() && 'default' === get_theme_mod( 'primary_color', 'default' ) ) || is_admin() ) {
-		return;
-	}
-
-	require_once get_parent_theme_file_path( '/inc/color-patterns.php' );
-
-	$primary_color = 199;
-	if ( 'default' !== get_theme_mod( 'primary_color', 'default' ) ) {
-		$primary_color = get_theme_mod( 'primary_color_hue', 199 );
-	}
-	?>
-
-	<style type="text/css" id="custom-theme-colors" <?php echo is_customize_preview() ? 'data-hue="' . absint( $primary_color ) . '"' : ''; ?>>
-		<?php echo twentynineteen_custom_colors_css(); ?>
-	</style>
-	<?php
-}
-add_action( 'wp_head', 'twentynineteen_colors_css_wrap' );
 
 
 /**
- * Add a subhead meta box to post page(s) and position it
- * under the title.
- *
- * @todo Move to class.
- * @see http://codex.wordpress.org/Function_Reference/add_meta_box
- * @see http://wordpress.org/extend/ideas/topic/add-meta-box-to-multiple-post-types
- * @see https://github.com/Horttcore/WordPress-Subtitle
- * @see http://codex.wordpress.org/Function_Reference/wp_nonce_field
+ * Disable all colors within Gutenberg.
  */
-
-# Adds a box to the main column on the Post and Page edit screens:
-function foo_deck($post_type) {
-
-    # Allowed post types to show meta box:
-    $post_types = array('post', 'page');
-
-    if (in_array($post_type, $post_types)) {
-
-        # Add a meta box to the administrative interface:
-        add_meta_box(
-            'foo-deck-meta-box', // HTML 'id' attribute of the edit screen section.
-            'subtitle',              // Title of the edit screen section, visible to user.
-            'foo_deck_meta_box', // Function that prints out the HTML for the edit screen section.
-            $post_type,          // The type of Write screen on which to show the edit screen section.
-            'advanced',          // The part of the page where the edit screen section should be shown.
-            'high'               // The priority within the context where the boxes should show.
-        );
-
-    }
-
+function tabor_gutenberg_disable_all_colors() {
+        add_theme_support( 'editor-color-palette' );
+	add_theme_support( 'disable-custom-colors' );
 }
+add_action( 'after_setup_theme', 'tabor_gutenberg_disable_all_colors' );
 
-# Callback that prints the box content:
-function foo_deck_meta_box($post) {
 
-    # Use `get_post_meta()` to retrieve an existing value from the database and use the value for the form:
-    $deck = get_post_meta($post->ID, '_deck', true);
+//Switch category ajax
+function xiong_theme_scripts() {
 
-    # Form field to display:
-    ?>
+        //Ajax filter scripts
+        wp_register_script( 'ajax', get_template_directory_uri() . '/js/shapajax.js', array( 'jquery' ), '1.0.0', true );
+        wp_enqueue_script( 'ajax' );
 
-        <label class="screen-reader-text" for="foo_deck">Sub Title</label>
-        <input id="foo_deck" type="text" autocomplete="off" value="<?=esc_attr($deck)?>" name="foo_deck" placeholder="Subtitle">
-
-    <?php
-
-    # Display the nonce hidden form field:
-    wp_nonce_field(
-        plugin_basename(__FILE__), // Action name.
-        'foo_deck_meta_box'        // Nonce name.
-    );
-
-}
-
-/**
- * @see https://wordpress.stackexchange.com/a/16267/32387
- */
-
-# Save our custom data when the post is saved:
-function foo_deck_save_postdata($post_id) {
-
-    # Is the current user is authorised to do this action?
-    if ((($_POST['post_type'] === 'page') && current_user_can('edit_page', $post_id) || current_user_can('edit_post', $post_id))) { // If it's a page, OR, if it's a post, can the user edit it?
-
-        # Stop WP from clearing custom fields on autosave:
-        if ((( ! defined('DOING_AUTOSAVE')) || ( ! DOING_AUTOSAVE)) && (( ! defined('DOING_AJAX')) || ( ! DOING_AJAX))) {
-
-            # Nonce verification:
-            if (wp_verify_nonce($_POST['foo_deck_meta_box'], plugin_basename(__FILE__))) {
-
-                # Get the posted deck:
-                $deck = sanitize_text_field($_POST['foo_deck']);
-
-                # Add, update or delete?
-                if ($deck !== '') {
-
-                    # Deck exists, so add OR update it:
-                    add_post_meta($post_id, '_deck', $deck, true) OR update_post_meta($post_id, '_deck', $deck);
-
-                } else {
-
-                    # Deck empty or removed:
-                    delete_post_meta($post_id, '_deck');
-
-                }
-
-            }
 
         }
+add_action( 'wp_enqueue_scripts', 'xiong_theme_scripts' );
 
-    }
-
-}
-
-# Get the deck:
-function foo_get_deck($post_id = FALSE) {
-
-    $post_id = ($post_id) ? $post_id : get_the_ID();
-
-    return apply_filters('foo_the_deck', get_post_meta($post_id, '_deck', TRUE));
-
-}
-
-# Display deck (this will feel better when OOP):
-function foo_the_deck() {
-
-    echo foo_get_deck(get_the_ID());
-
-}
-
-# Conditional checker:
-function foo_has_subtitle($post_id = FALSE) {
-
-    if (foo_get_deck($post_id)) return TRUE;
-
-}
-
-add_filter(
-  'wp_list_categories',
-  function($str) {
-    return str_replace('<br />','',$str);
-  }
-);
-
-
-# Define the custom box:
-add_action('add_meta_boxes', 'foo_deck');
-# Do something with the data entered:
-add_action('save_post', 'foo_deck_save_postdata');
-
-/**
- * @see https://wordpress.stackexchange.com/questions/36600
- * @see https://wordpress.stackexchange.com/questions/94530/
- */
-
-# Now move advanced meta boxes after the title:
-function foo_move_deck() {
-
-    # Get the globals:
-    global $post, $wp_meta_boxes;
-
-    # Output the "advanced" meta boxes:
-    do_meta_boxes(get_current_screen(), 'advanced', $post);
-
-    # Remove the initial "advanced" meta boxes:
-    unset($wp_meta_boxes['post']['advanced']);
-
-}
-
-add_action('edit_form_after_title', 'foo_move_deck');
 
 
 /**

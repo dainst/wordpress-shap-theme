@@ -28,8 +28,8 @@ get_header();
  </div>
 
  <?php endwhile; endif; ?>
- <div class="home-column middle"><h2 class="entry-title"><a href="" rel="bookmark">Gallery</a></h2></div>
- <div class="home-column right"><h2 class="entry-title"><a href="" rel="bookmark">Map</a></h2></div>
+ <div class="home-column middle" style="background:url('http://thecursor.net/shap/wp-content/uploads/2019/02/Presse-2011-002-01-0680-A-Hajjar-cmyk2.jpg') no-repeat;"><h2 class="entry-title-home"><a href="" rel="bookmark">Browse our photo archive </a></h2></div>
+ <div class="home-column right" style="background:url('http://thecursor.net/shap/wp-content/uploads/2019/04/map-placeholder-01.jpg') no-repeat;"><h2 class="entry-title-home"><a href="" rel="bookmark">Browse our places</a></h2></div>
 </div>
 
 

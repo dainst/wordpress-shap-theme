@@ -40,7 +40,6 @@ $discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentyni
 	?>
 </div><!-- .meta-info -->
 <?php the_title( '<h1 class="entry-title">', '</h1>' );?>
-<h3> <?php foo_the_deck(); ?> </h3>
 
 
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying all single posts
- * Template Name: Themes Template
+ * Template Name: Themes Template 2
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package WordPress
@@ -41,7 +41,17 @@
 					<div id="content" class="site-content">
 
 
-				<?php wp_list_categories('style=none'); ?>
+						<ul class="xiong-filters">
+
+		      <?php
+		          $args= array(
+		            'show_option_all'   =>   'All Themes', //Text for button All
+		            'title_li'          => __('')
+		          );
+		        wp_list_categories( $args );
+		      ?>
+		  </ul>
+
 				<section id="primary" class="content-area">
 					<main id="main" class="site-main">
 
