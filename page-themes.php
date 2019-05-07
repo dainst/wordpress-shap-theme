@@ -41,7 +41,16 @@
 					<div id="content" class="site-content">
 
 
-				<?php wp_list_categories('style=none'); ?>
+						<ul class="xiong-filters">
+
+	      <?php
+	          $args= array(
+	            'show_option_all'   =>   'All Articles', //Text for button All
+	            'title_li'          => __('')
+	          );
+	        wp_list_categories( $args );
+	      ?>
+	  </ul>
 				<section id="primary" class="content-area">
 					<main id="main" class="site-main">
 
@@ -62,12 +71,7 @@
 						$query = new WP_Query( $args );
 						if ( $query->have_posts() ) : ?>
 
-							<div class="row">
-								<div class="col-sm-12">
-									<h3 class="cat-title"><?php echo $category->name; ?><span></span></h3>
-								</div>
-							</div>
-
+					
 								<?php
 								while ( $query->have_posts() ) :
 									$query->the_post();
@@ -75,28 +79,28 @@
 									?>
 
 									<div id="post-<?php the_ID(); ?>" <?php post_class( 'row category-listing' ); ?>>
-										<div class="col-sm-2">
-										</div>
-										<div class="col-sm-10">
+
+
+
+										<div class="col-sm-6">
+
 											<h3 class="entry-title">
 												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 											</h3>
 
-											<div class="cat-name">
-												<?php echo $category->name; ?>
-											</div>
 
-											<?php the_excerpt(); ?>
 
-											<a class="pull-right read-more" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
+
+											<a class="pull-right read-more" href="<?php the_permalink(); ?>">Read the full story &#8250; <i class="fa fa-angle-right"></i></a>
 										</div>
 									</div>
 
 								<?php endwhile; wp_reset_postdata(); ?>
 
 								<div class="row cat-read-all">
-									<div class="col-sm-12">
-										<a class="pull-right" href="<?php echo get_category_link( $category->term_id ); ?>">Read All <?php echo $category->name; ?></a>
+
+									<div class="col-sm-6">
+										<a class="pull-right" href="<?php echo get_category_link( $category->term_id ); ?>">Explore <?php echo $category->name; ?> &#8250; </a>
 									</div>
 								</div>
 

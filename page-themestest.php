@@ -33,8 +33,8 @@
 			<?php if ( is_singular() && twentynineteen_can_show_post_thumbnail() ) : ?>
 				<div class="site-featured-image">
 					<?php
-						twentynineteen_post_thumbnail();
-						the_post();
+					//	twentynineteen_post_thumbnail();
+					//	the_post();
 					?>
 
 		<div class="entry-header">
@@ -52,66 +52,40 @@
 		      ?>
 		  </ul>
 
+
+
+
+
 				<section id="primary" class="content-area">
 					<main id="main" class="site-main">
 
-				<?php
-					/**
-					 * Loop through 3 most recent posts from each category
-					 * @see http://codex.wordpress.org/Function_Reference/get_categories
-					 */
-					$do_not_duplicate = array();
-					$categories = get_categories();
-					foreach ( $categories as $category ) :
-						$args = array(
-							'cat'            => $category->term_id,
-							'post_type'      => 'post',
-							'posts_per_page' => 3,
-							'post__not_in'   => $do_not_duplicate
-						);
-						$query = new WP_Query( $args );
-						if ( $query->have_posts() ) : ?>
+						<!--LOOP  -->
+						     <?php if ( have_posts() ) :?>
+						      <div id="main-content" class="row">
+						        <div id="inside">
+						          <div class="container">
 
-							<div class="row">
-								<div class="col-sm-12">
-									<h3 class="cat-title"><?php echo $category->name; ?><span></span></h3>
-								</div>
-							</div>
+						      <?php while ( have_posts() ) : the_post(); ?>
 
-								<?php
-								while ( $query->have_posts() ) :
-									$query->the_post();
-									$do_not_duplicate[] = get_the_id();
-									?>
+						         <article>
+						    <a class="xiong-articlebox" href="<?php the_permalink();?>">
+						        <header>
+						            <h3><?php the_title( );?></h3>
+						            <p><em><?php the_date( 'j.n.Y'); ?> </em></p>
 
-									<div id="post-<?php the_ID(); ?>" <?php post_class( 'row category-listing' ); ?>>
-										<div class="col-sm-2">
-										</div>
-										<div class="col-sm-10">
-											<h3 class="entry-title">
-												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-											</h3>
+						            </header>
+						             <p><?php the_excerpt();?></p>
+						           </a>
+						       </article>
 
-											<div class="cat-name">
-												<?php echo $category->name; ?>
-											</div>
+						      <?php endwhile; endif; ?>
 
-											<?php the_excerpt(); ?>
 
-											<a class="pull-right read-more" href="<?php the_permalink(); ?>">Read More <i class="fa fa-angle-right"></i></a>
-										</div>
-									</div>
+						    </div><!-- container-->
+						  </div><!--inside -->
+						</div>  <!--row -->
 
-								<?php endwhile; wp_reset_postdata(); ?>
-
-								<div class="row cat-read-all">
-									<div class="col-sm-12">
-										<a class="pull-right" href="<?php echo get_category_link( $category->term_id ); ?>">Read All <?php echo $category->name; ?></a>
-									</div>
-								</div>
-
-						<?php endif;
-					endforeach; ?>
+						
 					</main><!-- #main -->
 				</section><!-- #primary -->
 </div>

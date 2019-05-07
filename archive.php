@@ -10,45 +10,73 @@
  */
 
 get_header();
+get_template_part( 'template-parts/header/site', 'filter' );
+
 ?>
+<section id="primary" class="content-area">
+	<main id="main" class="site-main">
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<div class="entry-content">
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<?php
 
-		<?php if ( have_posts() ) : ?>
+		$ids = get_posts(
+				array(
+						'post_type'      => 'attachment',
+						'post_mime_type' => 'image',
+						'post_status'    => 'inherit',
+						'posts_per_page' => -1,
+						'fields'         => 'ids',
+						'tax_query' => array(
+																array(
+																	'taxonomy' => 'places',
+																	'field'    => 'slug',
+																	'terms'    => 'aleppo',
+																),
+															),
+				)
+		);
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-				?>
-			</header><!-- .page-header -->
 
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) :
-				the_post();
+		$images = array();
+		foreach ( $ids as $id )
+				$images[]= $id;
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content/content', 'excerpt' );
 
-				// End the loop.
-			endwhile;
 
-			// Previous/next page navigation.
-			twentynineteen_the_posts_navigation();
+		$ids_for_JIG = $images;
+		$ids_for_JIG = implode(',',$ids_for_JIG);
 
-			// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content/content', 'none' );
 
-		endif;
+
+
+		$args = array(
+						'post_type' => 'attachment',
+						'post_mime_type' => 'image',
+						'orderby' => 'post_date',
+						'order' => 'desc',
+						'posts_per_page' => '30',
+						'post_status'    => 'inherit'
+						 );
+$loop = new WP_Query( $args );
+
+		/* Start the Loop */
+	//	while ( $loop->have_posts() ) : $loop->the_post();
+get_jig(array('ids' => $ids_for_JIG));
+
+		//	get_template_part( 'template-parts/content/content', 'gallery' );
+
+
+
+//		endwhile; // End of the loop.
+
+
 		?>
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div>
 
+	</main><!-- #main -->
+	</article>
+</section><!-- #primary -->
+</div>
 <?php
 get_footer();

@@ -8,6 +8,8 @@
  */
 
 get_header();
+//get_template_part( 'template-parts/header/img', 'details' );
+
 ?>
 
 	<section id="primary" class="content-area">
@@ -71,6 +73,13 @@ get_header();
 					}
 					?>
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+					<ul><?php echo get_the_term_list( $post->ID, 'category', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul><?php echo get_the_term_list( $post->ID, 'shap_pool', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul><?php echo get_the_term_list( $post->ID, 'shap_places', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul><?php echo get_the_term_list( $post->ID, 'shap_time', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul><?php echo get_the_term_list( $post->ID, 'post_tag', '<li class="item">', ', ', '</li>' ) ?></ul>
+
+
 
 						<?php twentynineteen_entry_footer(); ?>
 
@@ -91,6 +100,6 @@ get_header();
 
 		</main><!-- .site-main -->
 	</section><!-- .content-area -->
-
+<!-- .site-filters</div> -->
 <?php
 get_footer();

@@ -293,6 +293,99 @@ add_action( 'wp_enqueue_scripts', 'xiong_theme_scripts' );
 
 
 
+add_action('wp_ajax_myfilter', 'misha_filter_function'); // wp_ajax_{ACTION HERE}
+add_action('wp_ajax_nopriv_myfilter', 'misha_filter_function');
+
+function misha_filter_function(){
+	$args = array(
+		'orderby' => 'date', // we will sort posts by date
+		'order'	=> $_POST['date'] // ASC or DESC
+	);
+
+	// for taxonomies / categories
+
+
+
+		if( isset( $_POST['categoryfilter'] )){
+		$args['tax_query'] = array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'category',
+				'field' => 'id',
+				'terms' => $_POST['categoryfilter']
+			),
+		array(
+					'taxonomy' => 'places',
+					'field' => 'id',
+					'terms' => $_POST['placefilter']
+				),
+		array(
+					'taxonomy' => 'time',
+					'field' => 'id',
+					'terms' => $_POST['timefilter']
+				),
+		array(
+					'taxonomy' => 'pool',
+					'field' => 'id',
+					'terms' => $_POST['collectionfilter']
+				)
+			);
+}
+
+	// if you want to use multiple checkboxed, just duplicate the above 5 lines for each checkbox
+
+	$query = new WP_Query( $args );
+
+	if( $query->have_posts() ) :
+		while( $query->have_posts() ): $query->the_post();
+			echo '<h2>' . $query->post->post_title . '</h2>';
+		endwhile;
+		wp_reset_postdata();
+	else :
+		echo 'No posts found';
+	endif;
+
+	die();
+}
+
+
+
+
+function wpb_latest_sticky() {
+
+/* Get all sticky posts */
+$sticky = get_option( 'sticky_posts' );
+
+/* Sort the stickies with the newest ones at the top */
+rsort( $sticky );
+
+/* Get the 5 newest stickies (change 5 for a different number) */
+$sticky = array_slice( $sticky, 0, 1 );
+
+/* Query sticky posts */
+$the_query = new WP_Query( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) );
+// The Loop
+if ( $the_query->have_posts() ) {
+    $return .= '<ul>';
+    while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+        $return .= '';
+
+    }
+    $return .= '</ul>';
+
+} else {
+    // no posts found
+}
+/* Restore original Post Data */
+wp_reset_postdata();
+
+return $return;
+
+}
+add_shortcode('latest_stickies', 'wpb_latest_sticky');
+
+
 /**
  * SVG Icons class.
  */
