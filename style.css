@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*
-Theme Name: SHAP Twenty Nineteen
+Theme Name: Twenty Nineteen
 Theme URI: https://github.com/WordPress/twentynineteen
-Author: the WordPress team and OWAIS
+Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: Our 2019 default theme is designed to show off the power of the block editor. It features custom styles for all the default blocks, and is built so that what you see in the editor looks like what you'll see on your website. Twenty Nineteen is designed to be adaptable to a wide range of websites, whether you’re running a photo blog, launching a new business, or supporting a non-profit. Featuring ample whitespace and modern sans-serif headlines paired with classic serif body text, it's built to be beautiful on all screen sizes.
 Requires at least: WordPress 4.9.6
@@ -129,7 +129,7 @@ input:lang(ar)[type="submit"], .comment-navigation .nav-previous:lang(ar),
 .entry .entry-content .wp-block-image figcaption:lang(ar),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(ar),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(ar), .entry .entry-content .wp-block-file:lang(ar), .entry .entry-content .wp-block-file .wp-block-file__button:lang(ar), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(ar), .wp-caption-text:lang(ar), .gallery-caption:lang(ar) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(ary), button:lang(ary),
@@ -187,7 +187,7 @@ input:lang(ary)[type="submit"], .comment-navigation .nav-previous:lang(ary),
 .entry .entry-content .wp-block-image figcaption:lang(ary),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(ary),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(ary), .entry .entry-content .wp-block-file:lang(ary), .entry .entry-content .wp-block-file .wp-block-file__button:lang(ary), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(ary), .wp-caption-text:lang(ary), .gallery-caption:lang(ary) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(azb), button:lang(azb),
@@ -245,7 +245,7 @@ input:lang(azb)[type="submit"], .comment-navigation .nav-previous:lang(azb),
 .entry .entry-content .wp-block-image figcaption:lang(azb),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(azb),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(azb), .entry .entry-content .wp-block-file:lang(azb), .entry .entry-content .wp-block-file .wp-block-file__button:lang(azb), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(azb), .wp-caption-text:lang(azb), .gallery-caption:lang(azb) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(ckb), button:lang(ckb),
@@ -303,7 +303,7 @@ input:lang(ckb)[type="submit"], .comment-navigation .nav-previous:lang(ckb),
 .entry .entry-content .wp-block-image figcaption:lang(ckb),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(ckb),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(ckb), .entry .entry-content .wp-block-file:lang(ckb), .entry .entry-content .wp-block-file .wp-block-file__button:lang(ckb), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(ckb), .wp-caption-text:lang(ckb), .gallery-caption:lang(ckb) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(fa-IR), button:lang(fa-IR),
@@ -361,7 +361,7 @@ input:lang(fa-IR)[type="submit"], .comment-navigation .nav-previous:lang(fa-IR),
 .entry .entry-content .wp-block-image figcaption:lang(fa-IR),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(fa-IR),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(fa-IR), .entry .entry-content .wp-block-file:lang(fa-IR), .entry .entry-content .wp-block-file .wp-block-file__button:lang(fa-IR), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(fa-IR), .wp-caption-text:lang(fa-IR), .gallery-caption:lang(fa-IR) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(haz), button:lang(haz),
@@ -419,7 +419,7 @@ input:lang(haz)[type="submit"], .comment-navigation .nav-previous:lang(haz),
 .entry .entry-content .wp-block-image figcaption:lang(haz),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(haz),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(haz), .entry .entry-content .wp-block-file:lang(haz), .entry .entry-content .wp-block-file .wp-block-file__button:lang(haz), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(haz), .wp-caption-text:lang(haz), .gallery-caption:lang(haz) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(ps), button:lang(ps),
@@ -477,7 +477,7 @@ input:lang(ps)[type="submit"], .comment-navigation .nav-previous:lang(ps),
 .entry .entry-content .wp-block-image figcaption:lang(ps),
 .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption:lang(ps),
 .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption:lang(ps), .entry .entry-content .wp-block-file:lang(ps), .entry .entry-content .wp-block-file .wp-block-file__button:lang(ps), .entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta:lang(ps), .wp-caption-text:lang(ps), .gallery-caption:lang(ps) {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 body:lang(be), button:lang(be),
@@ -2494,7 +2494,7 @@ a {
 
 a:hover,
 a:active {
-  color: #005177;
+  color: #FF5600;
   outline: 0;
   text-decoration: none;
 }
@@ -3755,6 +3755,7 @@ body.page .main-navigation {
 
 .site-content {
   overflow: hidden;
+
 }
 
 /* Content */
@@ -6745,7 +6746,6 @@ padding-left: 1em;
 }
 .item {
 display: flex;
-padding-top: 2vh;
 padding-bottom: 2vh;
 border-bottom: #FF5600 1px solid;
 

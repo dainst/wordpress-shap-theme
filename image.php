@@ -73,11 +73,11 @@ get_header();
 					}
 					?>
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-					<ul><?php echo get_the_term_list( $post->ID, 'category', '<li class="item">', ', ', '</li>' ) ?></ul>
-					<ul><?php echo get_the_term_list( $post->ID, 'shap_pool', '<li class="item">', ', ', '</li>' ) ?></ul>
-					<ul><?php echo get_the_term_list( $post->ID, 'shap_places', '<li class="item">', ', ', '</li>' ) ?></ul>
-					<ul><?php echo get_the_term_list( $post->ID, 'shap_time', '<li class="item">', ', ', '</li>' ) ?></ul>
-					<ul><?php echo get_the_term_list( $post->ID, 'post_tag', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul>Thematic Category:<?php echo get_the_term_list( $post->ID, 'category', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul>Collection:<?php echo get_the_term_list( $post->ID, 'shap_pool', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul>Place:<?php echo get_the_term_list( $post->ID, 'shap_places', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul>Time Period:<?php echo get_the_term_list( $post->ID, 'shap_time', '<li class="item">', ', ', '</li>' ) ?></ul>
+					<ul>Keywords:<?php echo get_the_term_list( $post->ID, 'post_tag', '<li class="item">', ', ', '</li>' ) ?></ul>
 
 
 
