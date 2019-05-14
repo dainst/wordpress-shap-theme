@@ -2345,7 +2345,7 @@ h3 {
 h2.author-title,
 p.author-bio,
 h4 {
-  font-size: 0.5em;
+  font-size: 0.8em;
 }
 
 .pagination .nav-links,
@@ -2744,6 +2744,31 @@ a:focus {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.wpml-ls-legacy-list-vertical {
+display: block;
+padding-top: 40px;
+}
+.wpml-ls-legacy-list-vertical > ul {
+
+  padding: 0;
+  list-style: none;
+  margin: 0 0 0 0 !important;
+
+}
+
+.wpml-ls-legacy-list-vertical .wpml-ls-item {
+position: relative;
+clear: both;
+width: 100%;
+padding: 0;
+}
+
+.wpml-ls-legacy-list-vertical .wpml-ls-flag {
+  width: 24px;
+height: 30px;
+
+}
+
 /** === Main menu === */
 .main-navigation {
   display: block;
@@ -2770,7 +2795,10 @@ body.page .main-navigation {
 }
 
 .main-navigation > div {
-  display: inline;
+
+  padding: 4px;
+  margin: 0;
+  text-align: center;
 }
 
 .main-navigation button {
@@ -2822,8 +2850,7 @@ body.page .main-navigation {
   position: relative;
     margin-bottom: 2em;
     padding: 1em;
-    border-top: 1px solid #FF5700;
-
+    font-size: 1.2em;
 }
 
 .main-navigation .main-menu > li > a:before,
@@ -2841,8 +2868,8 @@ body.page .main-navigation {
 .main-navigation .main-menu > li > a:before {
 
     top: 0px;
-    left: 35px;
-
+    left: 50%;
+    margin-left: -15px;
     /* If 1px darken stroke slightly */
     border-top-color: #FF5700;
     border-width: 16px;
@@ -2851,10 +2878,11 @@ body.page .main-navigation {
 /* Fill */
 
 .main-navigation .main-menu > li > a:after  {
-  top: -1px;
-   left: 36px;
+   top: -1px;
    border-top-color: #EAE9E6;
    border-width: 15px;
+   left: 50%;
+   margin-left: -14px;
 }
 
 

@@ -10,7 +10,7 @@
  */
 
 get_header();
-get_template_part( 'template-parts/header/site', 'filter' );
+
 ?>
 
 	<section id="primary" class="content-area">

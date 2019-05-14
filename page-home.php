@@ -37,16 +37,16 @@ get_header();
   //  get_template_part( 'template-parts/content/content', 'excerptshap' );
 
  ?>
- 	 <h2 class="entry-title-home"><a href="?page_id=17" rel="bookmark">Read our stories </a></h2>
+ 	 <h2 class="entry-title-home"><a href="themes/" rel="bookmark"><?php _e('Read our stories','shap-theme-text'); ?>  </a></h2>
 
  </div>
 
  <?php endwhile; endif; ?>
  <div class="home-column middle" style="background:url('http://thecursor.net/shap/wp-content/uploads/2019/05/mm_d_11_11_09-web2.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
-	 <h2 class="entry-title-home"><a href="?page_id=19" rel="bookmark">Browse our photo archive </a></h2>
+	 <h2 class="entry-title-home"><a href="gallery/" rel="bookmark"><?php _e('Browse our photo archive','shap-theme-text'); ?> </a></h2>
 </div>
  <div class="home-column right" style="background:url('http://thecursor.net/shap/wp-content/uploads/2019/04/map-placeholder-01.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
-	 <h2 class="entry-title-home"><a href="?page_id=829" rel="bookmark">Discover Syrian Heritage</a></h2>
+	 <h2 class="entry-title-home"><a href="editorial/" rel="bookmark"><?php _e('Discover Syrian Heritage','shap-theme-text'); ?></a></h2>
  </div>
 </div>
 

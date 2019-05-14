@@ -2577,6 +2577,27 @@ a:focus {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.wpml-ls-legacy-list-vertical > ul {
+
+  padding: 0;
+  list-style: none;
+  margin: 0 0 0 0 !important;
+
+}
+
+.wpml-ls-legacy-list-vertical .wpml-ls-item {
+position: relative;
+clear: both;
+width: 100%;
+padding: 0;
+}
+
+.wpml-ls-legacy-list-vertical .wpml-ls-flag {
+  width: 24px;
+height: 30px;
+
+}
+
 /** === Main menu === */
 .main-navigation {
   display: block;
@@ -2601,7 +2622,9 @@ body.page .main-navigation {
 }
 
 .main-navigation > div {
-  display: inline;
+  padding: 12px;
+  margin: 0;
+  text-align: center;
 }
 
 .main-navigation button {
@@ -2659,8 +2682,7 @@ body.page .main-navigation {
   position: relative;
     margin-bottom: 2em;
     padding: 1em;
-    border-top: 1px solid #FF5700;
-
+    font-size: 1em;
 }
 
 .main-navigation .main-menu > li > a:before,
@@ -2677,25 +2699,22 @@ body.page .main-navigation {
 /* Stroke */
 .main-navigation .main-menu > li > a:before {
 
-    top: 0px;
-    left: 35px;
-
+    top: 15px;
+    left: 50%;
+    margin-left: -15px;
     /* If 1px darken stroke slightly */
     border-top-color: #FF5700;
     border-width: 16px;
 }
-
 /* Fill */
 
 .main-navigation .main-menu > li > a:after  {
-  top: -1px;
-   right: 36px;
+   top: 14px;
    border-top-color: #EAE9E6;
    border-width: 15px;
+   left: 50%;
+   margin-left: -14px;
 }
-
-
-
 
 
 .main-navigation .main-menu > li > a + svg {
@@ -3770,6 +3789,7 @@ body.page .main-navigation {
 .site-header.featured-image .entry-meta,
 .site-header.featured-image .entry-title {
   color: #fff;
+  margin-right: 10px;
 }
 
 .site-header.featured-image .main-navigation a,
@@ -6765,6 +6785,9 @@ color: #fff;
   margin-top: 2em;
 }
 
+.attachment {
+background-color: #0f0e0e;
+}
 
 .attachment p, .attachment h1 {
   color: #fff;
