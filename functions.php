@@ -415,3 +415,12 @@ require get_template_directory() . '/inc/template-tags.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+// WPML fix
+// see https://wpml.org/forums/topic/wpml-sorry-you-are-not-allowed-to-access-this-page/
+function wpmlsupp_1706_reset_wpml_capabilities() {
+    if ( function_exists( 'icl_enable_capabilities' ) ) {
+        icl_enable_capabilities();
+    }
+}
+add_action( 'shutdown', 'wpmlsupp_1706_reset_wpml_capabilities' );
