@@ -2745,8 +2745,9 @@ a:focus {
 ## Menus
 --------------------------------------------------------------*/
 .wpml-ls-legacy-list-vertical {
-display: block;
+
 padding-top: 40px;
+margin-top: 50px;
 }
 .wpml-ls-legacy-list-vertical > ul {
 
